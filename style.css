@@ -1,6 +1,6 @@
 *, *::before, *::after {
   margin: 0;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,6 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: beige;
 }
 
 .container {
@@ -18,19 +19,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:lightgray;
+  background-color:#000;
 }
 
 .divider {
-  border: 2px solid black;
   width: 95%;
   height: 95%;
 }
 
-.display {
+#display {
   width: 100%;
   height: 20%;
-  border: 2px solid black;
+  color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 24px;
+  font-family: 'Orbitron';
+  background-color: #65d2fd;
 }
 
 .buttons {
@@ -44,37 +50,59 @@ body {
 }
 
 .one {
-  flex-grow: 2;
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .two, .three {
-  flex-grow: 1;
+  width: 25%;
 }
 
 #clear {
   height: 20%;
   width: 100%;
+  background-color: #cc2626;
+  color: #FFF;
+  font-family: "Orbitron";
+  font-size: 24px;
 }
 
 .column.one .small {
   width: 50%;
   height: 20%;
+  background-color: #024cec;
+  color: #FFF;
+  font-family: "Orbitron";
+  font-size: 16px;
 }
 
 .column.two .small {
-    width: 100%;
-    height: 20%;
+  width: 100%;
+  height: 20%;
+  background-color: #024cec;
+  color: #FFF;
+  font-family: "Orbitron";
+  font-size: 16px;
 }
 
 .column.three .small {
   width: 100%;
   height: 20%;
+  background-color: #999999;
+  font-family: "Orbitron";
+  font-size: 16px;
 }
 
 #equal {
   width: 100%;
   height: 40%;
+  background-color:#999999;
 }
+
+#backspace, #divisor {
+  background-color: #999999;
+  color: #000;
+}
+
 
