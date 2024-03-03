@@ -13,6 +13,12 @@ const button7 = document.querySelector('#seven');
 const button8 = document.querySelector('#eight');
 const button9 = document.querySelector('#nine');
 const button0 = document.querySelector('#zero');
+const plusButton = document.querySelector('#plus');
+const minusButton = document.querySelector('#minus');
+const multiplyButton = document.querySelector('#multiplier');
+const divideButton = document.querySelector('#divisor');
+const equalButton = document.querySelector('#equal');
+const clearButton = document.querySelector('#clear');
 
 button1.onclick = function() {updateDisplay(1);}
 button2.onclick = function() {updateDisplay(2);}
@@ -24,6 +30,12 @@ button7.onclick = function() {updateDisplay(7);}
 button8.onclick = function() {updateDisplay(8);}
 button9.onclick = function() {updateDisplay(9);}
 button0.onclick = function() {updateDisplay(0);}
+plusButton.onclick = function() {addSecondArgument(add);}
+minusButton.onclick = function() {addSecondArgument(subtract);}
+multiplyButton.onclick = function() {addSecondArgument(multiply);}
+divideButton.onclick = function() {addSecondArgument(divide);}
+equalButton.onclick = equal;
+clearButton.onclick = clear;
 
 function add(a, b) {
   return a + b;
@@ -38,7 +50,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  if(b != 0) {
+    return a / b;
+  }
+  return "WTF!?!";
 }
 
 function operate(op, a, b) {
@@ -53,4 +68,39 @@ function updateDisplay(num) {
     displayText.innerText += num;
     displayValue = displayText.innerText;
   }
+}
+
+function addSecondArgument(op) {
+  if (operator == undefined) {
+    firstNumber = displayValue;
+    displayValue = 0;
+    operator = op;
+  } else {
+    firstNumber = Number(firstNumber);
+    secondNumber = Number(displayValue);
+    let result = operate(operator, firstNumber, secondNumber);
+    displayValue = 0;
+    displayText.innerText = result;
+    operator = op;
+    firstNumber = result;
+  }
+}
+
+function equal() {
+  if (operator != undefined) {
+    firstNumber = Number(firstNumber);
+    secondNumber = Number(displayValue);
+    let result = operate(operator, firstNumber, secondNumber);
+    displayValue = 0;
+    displayText.innerText = result;
+    operator = undefined;
+  }  
+}
+
+function clear() {
+  firstNumber = undefined;
+  secondNumber = undefined;
+  operator = undefined;
+  displayValue = 0;
+  displayText.innerText = 0;
 }
