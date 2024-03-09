@@ -34,9 +34,10 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: 24px;
+  font-size: 48px;
   font-family: 'Orbitron';
   background-color: #65d2fd;
+  padding-right: 5px;
 }
 
 .buttons {
@@ -100,7 +101,7 @@ body {
   background-color:#999999;
 }
 
-#backspace, #divisor {
+#divisor {
   background-color: #999999;
   color: #000;
 }
