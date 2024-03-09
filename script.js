@@ -1,7 +1,7 @@
 let firstNumber;
 let secondNumber;
 let operator;
-let displayValue = 0;
+let displayValue;
 const displayText = document.querySelector('#display');
 const button1 = document.querySelector('#one');
 const button2 = document.querySelector('#two');
@@ -61,7 +61,7 @@ function operate(op, a, b) {
 }
 
 function updateDisplay(num) {
-  if(displayValue == 0) {
+  if(displayValue == undefined) {
     displayText.innerText = num;
     displayValue = num;
   } else {
@@ -71,15 +71,18 @@ function updateDisplay(num) {
 }
 
 function addSecondArgument(op) {
-  if (operator == undefined) {
+  if (operator == undefined && firstNumber == undefined) {
     firstNumber = displayValue;
-    displayValue = 0;
+    displayValue = undefined;
+    operator = op;
+  } else if ((operator == undefined && firstNumber != undefined)  || 
+             (operator != undefined && firstNumber != undefined && displayValue == undefined)) {
     operator = op;
   } else {
     firstNumber = Number(firstNumber);
     secondNumber = Number(displayValue);
     let result = operate(operator, firstNumber, secondNumber);
-    displayValue = 0;
+    displayValue = undefined;
     displayText.innerText = result;
     operator = op;
     firstNumber = result;
@@ -87,13 +90,15 @@ function addSecondArgument(op) {
 }
 
 function equal() {
-  if (operator != undefined) {
+  if (operator != undefined && displayValue != undefined) {
     firstNumber = Number(firstNumber);
     secondNumber = Number(displayValue);
     let result = operate(operator, firstNumber, secondNumber);
-    displayValue = 0;
+    displayValue = undefined;
     displayText.innerText = result;
     operator = undefined;
+    firstNumber = result;
+    secondNumber = undefined;
   }  
 }
 
@@ -101,6 +106,6 @@ function clear() {
   firstNumber = undefined;
   secondNumber = undefined;
   operator = undefined;
-  displayValue = 0;
-  displayText.innerText = 0;
+  displayValue = undefined;
+  displayText.innerText = "";
 }
